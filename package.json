@@ -1,0 +1,26 @@
+{
+  "name": "coin-data-spider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guojindai/coin-data-spider.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guojindai/coin-data-spider/issues"
+  },
+  "homepage": "https://github.com/guojindai/coin-data-spider#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "csv-write-stream": "^2.0.0",
+    "moment": "^2.20.1",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}

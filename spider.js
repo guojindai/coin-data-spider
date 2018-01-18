@@ -19,6 +19,9 @@ const request = requestRaw.defaults({
 function filteCoin(htmlStr) {
   const $root = $.load(htmlStr);
   $root('#currencies-all tbody tr').each((i, tr) => {
+    if (i !== 0) {
+      return true;
+    }
     const $tr = $(tr);
     if (parseInt($tr.find('.market-cap').attr('data-usd')) > 0) {
       const coinHref = $tr.find('.currency-name-container').attr('href');
@@ -37,12 +40,12 @@ function getDetail(href) {
     const data = {
       name: $root('.bold.hidden-xs').text().replace(/[()]/g, ''),
       rank: parseInt($root('.label-success').text().replace(/rank/i, '')),
-      vol24: parseInt($($root('.coin-summary-item-detail').get(1))
-        .find('[data-usd]').attr('data-usd')),
-      cap: parseInt($($root('.coin-summary-item-detail').get(0))
-        .find('[data-usd]').attr('data-usd')),
-      cirSupply: parseInt($($root('.coin-summary-item-detail').get(2)).text().replace(/,/g, '')),
-      totalSupply: parseInt($($root('.coin-summary-item-detail').get(3)).text().replace(/,/g, '')),
+      vol24: new Number($($root('.coin-summary-item-detail').get(1))
+        .find('[data-usd]').attr('data-usd')).valueOf(),
+      cap: new Number($($root('.coin-summary-item-detail').get(0))
+        .find('[data-usd]').attr('data-usd')).valueOf(),
+      cirSupply: new Number($($root('.coin-summary-item-detail').get(2)).text().replace(/[^0-9]/g, '')).valueOf(),
+      totalSupply: new Number($($root('.coin-summary-item-detail').get(3)).text().replace(/[^0-9]/g, '')).valueOf(),
       priceInit: parseFloat($($hisLastTr.find('td').get(4)).text()),
       priceNow: parseFloat($root('#quote_price').attr('data-usd')),
       listingDate: moment($($hisLastTr.find('td').get(0)).text(), 'MMM DD, YYYY')

@@ -13,7 +13,7 @@ let total = 0;
 let done = 0;
 
 const request = requestRaw.defaults({
-  pool: { maxSockets: 100 }
+  pool: { maxSockets: 50 }
 });
 
 function filteCoin(htmlStr) {

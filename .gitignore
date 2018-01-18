@@ -60,3 +60,4 @@ typings/
 # custom
 output
 mock.html
+package-lock.json

@@ -19,9 +19,6 @@ const request = requestRaw.defaults({
 function filteCoin(htmlStr) {
   const $root = $.load(htmlStr);
   $root('#currencies-all tbody tr').each((i, tr) => {
-    if (i !== 0) {
-      return true;
-    }
     const $tr = $(tr);
     if (parseInt($tr.find('.market-cap').attr('data-usd')) > 0) {
       const coinHref = $tr.find('.currency-name-container').attr('href');

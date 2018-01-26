@@ -13,7 +13,7 @@ let total = 0;
 let done = 0;
 
 const request = requestRaw.defaults({
-  pool: { maxSockets: 50 }
+  pool: { maxSockets: 1 }
 });
 
 function filteCoin(htmlStr) {
@@ -30,7 +30,7 @@ function filteCoin(htmlStr) {
 }
 
 function getDetail(href) {
-  const url = `${URL_ROOT}${href}historical-data/?start=20130428&end=20180117`;
+  const url = `${URL_ROOT}${href}historical-data/?start=20130428&end=${moment().format('YYYYMMDD')}`;
   request(url).then((htmlStr) => {
     const $root = $.load(htmlStr);
     const $hisLastTr = $root('#historical-data tbody tr').last();
